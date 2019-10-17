@@ -1,0 +1,6 @@
+{
+  "sql": {
+    "selectAllFromStudent": "SELECT * FROM Student",
+    "insertStudent": "INSERT INTO Student (studentPnr, name) VALUES (?, ?)"
+  }
+}
