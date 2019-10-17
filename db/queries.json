@@ -1,6 +1,11 @@
 {
   "sql": {
-    "selectAllFromStudent": "SELECT * FROM Student",
-    "insertStudent": "INSERT INTO Student (studentPnr, name) VALUES (?, ?)"
+    "insert": {
+      "insertStudent": "INSERT INTO Student (studentPnr, name) VALUES (?, ?)",
+      "insertGrades": "INSERT INTO Examination (grade, examinationNumber, studentID, courseID) VALUES ?,?,?,?"
+    },
+    "select": {
+      "selectAllFromStudent": "SELECT * FROM Student"
+    }
   }
 }
