@@ -1,7 +1,7 @@
 # d0031n-ladok
 Course work writing a REST api
 
-## Endpoins
+## Endpoints
 ### Grade
 `POST /ladok/v1/grade`
 #### Request body
