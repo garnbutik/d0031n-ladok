@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "knex": "^0.19.5",
     "mysql": "^2.17.1",
-    "pino": "^5.13.5"
+    "pino": "^5.13.5",
+    "squel": "^5.13.0"
   },
   "devDependencies": {
     "express-pino-logger": "^4.0.0"
