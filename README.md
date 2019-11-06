@@ -11,7 +11,8 @@ Accepts a JSON with structure:
 	"grade": "VG",
 	"examinationNumber": "00222",
 	"student": XXXXXXXXXX,
-	"courseCode": "LTU-27001"
+	"courseCode": "LTU-27001",
+    "date": "2019-10-17"
 }
 ```
 ### Grades
@@ -19,21 +20,19 @@ Accepts a JSON with structure:
 #### Request body
 Accepts a JSON with structure:
 ```
-    "course": "LTU-27001",
-    "examinations": [
-    	  {
-        	"code": "0004",
-        	"studentGrades": [
-            	{
-                	"pnr": "XXXXXXXXXX",
-                	"grade": "G"
-            	},
-            	{
-                	"pnr": "11",
-                	"grade": "VG"
-            	}
-        	]
-    	  }
-      ]
+    {
+        "courseCode": "LTU-27001",
+        "examination": "0008",
+        "date": "2019-10-17",
+        "listOfGrades": [
+            {
+                "student": "XXXXXXXXXX",
+                "grade": "G"
+            },
+            {
+                "student": "XXXXXXXXXX",
+                "grade": "VG"
+            }
+        ]
     }
 ```
