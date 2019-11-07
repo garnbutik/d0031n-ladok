@@ -11,6 +11,7 @@ rest.use("/ladok/v1", router);
 Accepts one student and inserts the grade
  */
 router.post("/grade", gradeService.validateOneGradeObject(), async (req, res) => {
+    try {
         const resFromDB = await gradeService.addGrade(req.body);
         if (resFromDB > 0) {
             res.status(201).send({
@@ -23,6 +24,10 @@ router.post("/grade", gradeService.validateOneGradeObject(), async (req, res) =>
                 "resource": null
             });
         }
+    } catch (error) {
+        res.status(500).send("Database error");
+    }
+
 });
 
 /*
