@@ -1,7 +1,11 @@
 const db = require("../db/db");
 const queries = require("../db/queries");
+const schema = require("../config/jsonSchema");
 const validator = require("../config/config").validator;
 const utils = require("util");
+const Ajv = require("ajv");
+
+const ajv = Ajv({removeAdditional: "all", verbose: true, allErrors: true});
 
 async function addGrade(gradingObject){
     const resultFromDB = await db.query(queries.sql.insert.insertGrades, [
@@ -41,17 +45,42 @@ async function addGrades(gradingObject){
     return listOfError;
 }
 
-function validateOneGradeObject(){
+let validateOneGradeObject = () => {
     return (req, res, next) => {
-        const neededKeys = validator.requestParamsForSingleGrade;
-        const isValid = neededKeys.every(key => Object.keys(req.body).includes(key));
+        let validate = ajv.compile(schema.oneGrade);
+        const isValid = validate(req.body);
         if (!isValid){
             return res.status(400).send("Bad request");
         }
         next();
     }
-}
+};
 
+let validateRequest = () => {
+    return (req, res, next) => {
+
+        //Compiles the correct schema to validate
+        let validate = ajv.compile(schema.multipleGrades);
+        console.log(req.body);
+        console.log(schema.multipleGrades);
+        //Validates the request
+        const isValid = validate(req.body);
+
+        //return 400 response if request doesn't fulfill contract
+        if (!isValid) {
+            return res.status(400).send({
+                "status": 400,
+                "message": "Bad request. Please check your request and try again",
+                "errors": ajv.errorsText(validate.errors)
+            });
+        }
+
+        //if valid go to next
+        next();
+    }
+};
+
+module.exports.validateRequest = validateRequest;
 module.exports.validateOneGradeObject = validateOneGradeObject;
 module.exports.addGrades = addGrades;
 module.exports.addGrade = addGrade;
