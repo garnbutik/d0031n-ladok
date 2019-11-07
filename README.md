@@ -6,20 +6,20 @@ Course work writing a REST api
 `POST /ladok/v1/grade`
 #### Request body
 Accepts a JSON with structure:
-```
+```json
 {
 	"grade": "VG",
 	"examinationNumber": "00222",
-	"student": XXXXXXXXXX,
-	"courseCode": "LTU-27001",
-    "date": "2019-10-17"
+	"student": "XXXXXXXXXX",
+	"courseCode": "LTU-27001", 
+        "date": "2019-10-17"
 }
 ```
 ### Grades
 `POST /ladok/v1/grades`
 #### Request body
 Accepts a JSON with structure:
-```
+```json
     {
         "courseCode": "LTU-27001",
         "examination": "0008",
