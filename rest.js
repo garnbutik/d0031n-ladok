@@ -2,11 +2,6 @@ const express = require("express");
 const utils = require("util");
 const gradeService = require("./service/gradeService");
 
-const db = require("./db/db");
-const queries = require("./db/queries");
-
-const port = 3000;
-
 const rest = express();
 const router = express.Router();
 rest.use(express.json());
@@ -51,6 +46,13 @@ router.get('*', (req, res) => {
     res.status(404).send({
         "Status": "404",
         "Message": "Resource not found"
+    });
+});
+
+router.post('*', (req, res) => {
+    res.status(400).send({
+        "Status": "400",
+        "Message": "Bad request"
     });
 });
 
