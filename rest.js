@@ -25,7 +25,10 @@ router.post("/grade", gradeService.validateOneGradeObject(), async (req, res) =>
             });
         }
     } catch (error) {
-        res.status(500).send("Database error");
+        res.status(500).send({
+            "status": 500,
+            "message": error.message
+        });
     }
 
 });
@@ -33,8 +36,7 @@ router.post("/grade", gradeService.validateOneGradeObject(), async (req, res) =>
 /*
 Accepts a list of grades on several examinations on one course
  */
-router.post("/grades", async  (req, res) => {
-    //gradeService.validateMultipleGradeObject(req.body);
+router.post("/grades", gradeService.validateRequest(), async (req, res) => {
     const obj = await gradeService.addGrades(req.body);
     if (obj.length > 0){
         res.status(200).send(

@@ -1,0 +1,54 @@
+{
+  "multipleGrades": {
+    "title": "correct request",
+    "description": "used for validating post request of grades",
+    "type": "object",
+    "properties": {
+      "courseCode": {
+        "type": "string"
+      },
+      "examination": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string"
+      },
+      "listOfGrades": {
+        "type": "array"
+      }
+    },
+    "required": [
+      "courseCode",
+      "examination",
+      "date",
+      "listOfGrades"
+    ]
+  },
+  "oneGrade": {
+    "type": "object",
+    "properties": {
+      "grade": {
+        "type": "string"
+      },
+      "examinationNumber": {
+        "type": "string"
+      },
+      "student": {
+        "type": "string"
+      },
+      "courseCode": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string"
+      }
+    },
+    "required":[
+      "grade",
+      "examinationNumber",
+      "student",
+      "courseCode",
+      "date"
+    ]
+  }
+}
