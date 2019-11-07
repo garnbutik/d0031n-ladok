@@ -2,7 +2,7 @@
   "sql": {
     "insert": {
       "insertStudent": "INSERT INTO Student (studentPnr, name) VALUES (?, ?)",
-      "insertGrades": "INSERT INTO Examination (grade, examinationNumber, studentID, courseID) VALUES (?, ?, (SELECT s.studentID FROM Student s where studentPnr = ?), (select c.courseID from Course c where courseCode = ?))"
+      "insertGrades": "INSERT INTO Examination (grade, examinationNumber, studentID, courseID, dateGraded) VALUES (?, ?, (SELECT s.studentID FROM Student s where studentPnr = ?), (select c.courseID from Course c where courseCode = ?), ?)"
     },
     "select": {
       "selectAllFromStudent": "SELECT * FROM Student"

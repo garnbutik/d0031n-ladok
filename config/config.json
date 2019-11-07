@@ -1,0 +1,11 @@
+{
+  "validator":
+    {
+      "requestParamsForSingleGrade":
+      ["grade",
+        "examinationNumber",
+        "student",
+        "courseCode",
+        "date"]
+    }
+  }
