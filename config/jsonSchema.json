@@ -11,10 +11,26 @@
         "type": "string"
       },
       "date": {
-        "type": "string"
+        "type": "string",
+        "format": "date"
       },
       "listOfGrades": {
-        "type": "array"
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "student": {
+              "type": "string"
+            },
+            "grade": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "student",
+            "grade"
+          ]
+        }
       }
     },
     "required": [
@@ -40,7 +56,8 @@
         "type": "string"
       },
       "date": {
-        "type": "string"
+        "type": "string",
+        "format": "date"
       }
     },
     "required":[

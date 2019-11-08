@@ -50,7 +50,11 @@ let validateOneGradeObject = () => {
         let validate = ajv.compile(schema.oneGrade);
         const isValid = validate(req.body);
         if (!isValid){
-            return res.status(400).send("Bad request");
+            return res.status(400).send({
+                "status": 400,
+                "message": "Bad request. Please check your request and try again",
+                "errors": ajv.errorsText(validate.errors)
+            });
         }
         next();
     }
@@ -61,8 +65,7 @@ let validateRequest = () => {
 
         //Compiles the correct schema to validate
         let validate = ajv.compile(schema.multipleGrades);
-        console.log(req.body);
-        console.log(schema.multipleGrades);
+
         //Validates the request
         const isValid = validate(req.body);
 
