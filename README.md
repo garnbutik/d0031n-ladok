@@ -1,5 +1,5 @@
 # d0031n-ladok
-Course work writing a REST api
+Course work writing a RESTFul API.
 
 ## Endpoints
 ### Grade
