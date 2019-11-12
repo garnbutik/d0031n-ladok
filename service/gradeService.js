@@ -3,6 +3,7 @@ const queries = require("../db/queries");
 const schema = require("../config/jsonSchema");
 const validator = require("../config/config").validator;
 const utils = require("util");
+const errorHandler = require("../errorHandling");
 const Ajv = require("ajv");
 
 const ajv = Ajv({removeAdditional: "all", verbose: true, allErrors: true});
@@ -37,9 +38,10 @@ async function addGrades(gradingObject){
                         date
                     ]);
         } catch (error) {
-            listOfError.push(
-                utils.format("Could not insert student: %s. Error: %s", grade.student, error.message)
-            );
+            listOfError.push(errorHandler.databaseerrorHandler(error, grade, courseCode));
+            // listOfError.push(
+            //     utils.format("Could not insert student: %s. Error: %s", grade.student, error.message)
+            //);
         }
     }
     return listOfError;
