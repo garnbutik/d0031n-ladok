@@ -6,6 +6,12 @@ const rest = express();
 const router = express.Router();
 rest.use(express.json());
 rest.use("/ladok/v1", router);
+router.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Pass to next layer of middleware
+    next();
+});
 
 /*
 Accepts one student and inserts the grade
