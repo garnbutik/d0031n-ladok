@@ -1,10 +1,12 @@
 const express = require("express");
 const utils = require("util");
 const gradeService = require("./service/gradeService");
+const cors = require('cors');
 
 const rest = express();
 const router = express.Router();
 rest.use(express.json());
+rest.use(cors());
 rest.use("/ladok/v1", router);
 router.use(function (req, res, next) {
     // Website you wish to allow to connect
