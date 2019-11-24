@@ -8,5 +8,10 @@
         "courseCode",
         "date"]
     },
-  "serverPort": 3000
+  "serverPort": 3000,
+  "cors": {
+    "methods": ["POST"],
+    "origin": "*",
+    "allowedHeaders": ["Content-Type"]
+  }
   }

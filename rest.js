@@ -2,18 +2,15 @@ const express = require("express");
 const utils = require("util");
 const gradeService = require("./service/gradeService");
 const cors = require('cors');
+const config = require('./config/config');
 
 const rest = express();
 const router = express.Router();
 rest.use(express.json());
 rest.use(cors());
+rest.options("*", cors(config.cors));
+
 rest.use("/ladok/v1", router);
-router.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // Pass to next layer of middleware
-    next();
-});
 
 /*
 Accepts one student and inserts the grade
